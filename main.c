@@ -5,5 +5,6 @@ int
 main()
 {
   int q, w, e, r, t, y;
+  y = 10;
   q=q+w+e+r+t+y;
 }
