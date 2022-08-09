@@ -6,6 +6,15 @@ jobs:
   pull_request:
    runs-on: ubuntu-latest
    steps:
-    - name: test
-      run: echo $GITHUB_WORKSPACE"/src"
+    - uses: actions/checkout@v3
+      with:
+        ref: test
+        
+    - uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: test pull request
+        title: 'fix bug'
+        push-to-fork: tonasodji/test_pull_request
+  
   
