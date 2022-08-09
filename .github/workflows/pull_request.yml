@@ -1,0 +1,11 @@
+name: pull_request
+
+on:
+  workflow_dispatch:
+jobs:
+  pull_request:
+   runs-on: ubuntu-latest
+   steps:
+    - name: test
+      run: echo $GITHUB_WORKSPACE
+  
