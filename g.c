@@ -5,5 +5,7 @@ void g()
 {
  
   int a, b;
+  //fix a
+  a = 0;
   a = a + a;
 }
