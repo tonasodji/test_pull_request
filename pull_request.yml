@@ -1,0 +1,7 @@
+name: "PR"
+on:
+  workflow_dispatch:
+  #push:
+jobs:
+  analyze:
+    uses: tonasodji/pvs/.github/workflows/github-ci.yml@main
