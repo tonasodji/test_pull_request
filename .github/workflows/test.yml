@@ -1,0 +1,49 @@
+
+name: "test_2"
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+env:
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  #analyze:
+    #uses: tonasodji/pvs/.github/workflows/github-ci.yml@main
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          repository: tonasodji/test_pull_request
+          ref: main
+      - name: create file
+        run: |
+          git clone https://github.com/tonasodji/test_pull_request_fork_2.git
+          cp -r test_pull_request_fork_2/.github .
+          rm -rf test_pull_request_fork_2
+        
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4.1.1
+        with:
+          token: ${{ secrets.TOK }}
+
+          
+
+
+    
+
+        
+
+              
+
+
+        
+
+        
+        
+        
+
+   
+

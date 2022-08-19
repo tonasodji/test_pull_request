@@ -1,0 +1,37 @@
+name: "Analyze"
+
+on:
+  workflow_dispatch:
+  #workflow_call:
+  pull_request:
+  #workflow_run:
+    #workflows: [test_2]
+    #types:
+      #- completed
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    # This step checks out a copy of your repository.
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      #with:
+        #repository: tonasodji/test_pull_request_fork_2
+    - name: run
+      run: |
+        #rm 
+        echo "REF" $GITHUB_REF
+        echo "REF_NAME" $GITHUB_REF_NAME
+        echo "REPO" $GITHUB_REPOSITORY
+        git clone https://github.com/tonasodji/pvs.git
+        cd pvs
+        pvs-studio-analyzer trace -- make -j8
+        pvs-studio-analyzer analyze -j8 -l PVS-Studio.lic -o PVS-Studio.log
+        plog-converter PVS-Studio.log -t sarif -o results.sarif
+   
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        # Path to SARIF file relative to the root of the repository
+        sarif_file: pvs/results.sarif
