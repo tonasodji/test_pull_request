@@ -1,2 +1,2 @@
-.gitattributes linguist-detectable=true
+.gitattributes linguist-detectable=false
 .github/workflows/pull_request.yml linguist-generated=true
