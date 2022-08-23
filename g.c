@@ -7,3 +7,4 @@ void g()
   int a, b;
   a = a + a;
 }
+//fix bug
