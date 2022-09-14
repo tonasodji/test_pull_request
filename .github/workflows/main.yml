@@ -17,12 +17,12 @@ jobs:
     - name: Analyze
       run: |
         set -e
-        git clone https://github.com/tonasodji/test.git .github
+        git clone https://github.com/tonasodji/test.git .clone
         gh_ref=$(echo $GITHUB_REF_NAME | sed 's,/,_,')
         # Prepare for build
-        .github/prepare.sh
+        .clone/prepare.sh
         # Analyze the project
-        .github/analyze.sh MC3
+        .clone/analyze.sh MC3
         # Make the directory for ECLAIR project database
         mkdir -p ~/github/$GITHUB_REPOSITORY/$GITHUB_RUN_NUMBER
         rm -f ~/github/$GITHUB_REPOSITORY/last_$gh_ref
