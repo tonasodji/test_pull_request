@@ -17,7 +17,7 @@ jobs:
     - name: Analyze
       run: |
         set -e
-        A="NEWS README AUTHORS changeLog"
+        A="INSTALL NEWS README AUTHORS changeLog"
         touch $A
         git clone https://github.com/tonasodji/test.git .clone
         gh_ref=$(echo $GITHUB_REF_NAME | sed 's,/,_,')
